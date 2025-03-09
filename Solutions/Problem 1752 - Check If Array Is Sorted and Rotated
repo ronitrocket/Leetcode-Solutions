@@ -1,0 +1,25 @@
+class Solution {
+    
+    int[] memo;
+    
+    public int tribonacci(int n) {
+        memo = new int[n+1];
+        Arrays.fill(memo, -1);
+        return tribonacciRecurse(n);
+    }
+    
+    public int tribonacciRecurse(int n) {
+        if (memo[n] >= 0) {
+            return memo[n];
+        }
+        if (n <= 0) {
+            return 0;
+        }
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+        int result = tribonacciRecurse(n-1) + tribonacciRecurse(n-2) + tribonacciRecurse(n-3);
+        memo[n] = result;
+        return result;
+    }
+}
